@@ -746,3 +746,121 @@ p {
         grid-template-columns: 1fr;
     }
 }
+
+/* Biography Photo Styles */
+.bio-container {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.bio-image-wrapper {
+    flex-shrink: 0;
+    width: 200px;
+    height: 200px;
+    border: 2px solid var(--terminal-green);
+    padding: 5px;
+    background: rgba(51, 255, 0, 0.05);
+    box-shadow: 0 0 10px rgba(51, 255, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.bio-image-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            rgba(51, 255, 0, 0) 50%,
+            rgba(0, 0, 0, 0.2) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.bio-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(1) hue-rotate(90deg) saturate(1.5) contrast(1.2) brightness(0.8);
+    transition: filter 0.3s;
+}
+
+.bio-image-wrapper:hover .bio-image {
+    filter: none;
+}
+
+.bio-text-wrapper {
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .bio-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bio-text-wrapper {
+        width: 100%;
+    }
+
+    .bio-image-wrapper {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 1rem;
+    }
+
+
+}
+
+/* PRELOADER STYLES */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    z-index: 95;
+    /* Below CRT overlay (100) but above everything else */
+    padding: 2rem;
+    overflow: hidden;
+    font-family: var(--font-main);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#boot-log {
+    color: var(--terminal-green);
+    font-size: 1.2rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    text-shadow: 0 0 5px var(--terminal-green);
+}
+
+#boot-log::after {
+    content: "_";
+    animation: blink 0.5s step-end infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.fade-out {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-out;
+}

@@ -1,4 +1,54 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Boot Sequence
+    const preloader = document.getElementById('preloader');
+    const bootLog = document.getElementById('boot-log');
+
+    if (preloader && bootLog) {
+        const bootText = [
+            "INITIALIZING KERNEL...",
+            "LOADING DRIVERS: [ OK ]",
+            "CHECKING MEMORY: 64KB OK",
+            "MOUNTING FILESYSTEM...",
+            "ACCESSING RESTRICTED DATA...",
+            "DECRYPTING USER PROFILE: AMAN KUMAR",
+            "SYSTEM READY."
+        ];
+
+        const MIN_LOAD_TIME = 4000; // 4 seconds
+        const startTime = Date.now();
+        let lineIndex = 0;
+
+        const typeLine = () => {
+            if (lineIndex < bootText.length) {
+                const line = document.createElement('div');
+                line.textContent = "> " + bootText[lineIndex];
+                bootLog.appendChild(line);
+                lineIndex++;
+                // Random delay between lines for realism
+                setTimeout(typeLine, 100 + Math.random() * 400);
+            } else {
+                // Sequence finished, check time
+                const elapsedTime = Date.now() - startTime;
+                const remainingTime = Math.max(0, MIN_LOAD_TIME - elapsedTime);
+
+                setTimeout(() => {
+                    preloader.classList.add('fade-out');
+                    // Completely remove after transition
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                        startBioTyping();
+                    }, 500);
+                }, remainingTime);
+            }
+        };
+
+        // Start boot sequence
+        typeLine();
+    } else {
+        // If no preloader, start bio typing immediately
+        startBioTyping();
+    }
+
     // Icons
     const icons = {
         recovered: document.getElementById('icon-recovered'),
@@ -54,20 +104,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     // Typing Effect
-    const bioText = document.getElementById('bio-text');
-    if (bioText) {
+    function startBioTyping() {
+        const bioText = document.getElementById('bio-text');
+        // Check if already typed or doesn't exist
+        if (!bioText || bioText.getAttribute('data-typed') === 'true') return;
+
         const originalText = bioText.innerHTML;
         bioText.innerHTML = '';
+        bioText.setAttribute('data-typed', 'true');
 
-        let i = 0;
+        // Split by HTML tags
+        // This regex splits string into parts: text, tag, text, tag...
+        // e.g. "Hello <br> World" -> ["Hello ", "<br>", " World"]
+        const parts = originalText.split(/(<[^>]*>)/);
+
+        let partIndex = 0;
+        let charIndex = 0;
+
         const typeWriter = () => {
-            if (i < originalText.length) {
-                bioText.innerHTML += originalText.charAt(i);
-                i++;
-                setTimeout(typeWriter, 10 + Math.random() * 20);
+            if (partIndex < parts.length) {
+                const part = parts[partIndex];
+
+                if (part.startsWith('<')) {
+                    // It's a tag, append completely and move to next part
+                    bioText.innerHTML += part;
+                    partIndex++;
+                    setTimeout(typeWriter, 10);
+                } else {
+                    // It's text, type chars
+                    if (charIndex < part.length) {
+                        bioText.innerHTML += part.charAt(charIndex);
+                        charIndex++;
+                        setTimeout(typeWriter, 10 + Math.random() * 20);
+                    } else {
+                        // Finished this text part, move to next
+                        partIndex++;
+                        charIndex = 0;
+                        setTimeout(typeWriter, 10);
+                    }
+                }
             }
         };
-        setTimeout(typeWriter, 1000);
+        setTimeout(typeWriter, 100);
     }
 
     // WINDOW CONTROLS
