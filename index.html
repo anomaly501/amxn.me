@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEO // MATRIX OPERATOR PORTFOLIO</title>
+  <meta name="description" content="Cyberpunk Matrix-themed full-stack software engineer portfolio featuring digital rain, interactive shell terminal, and neural skills showcase.">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- HTML5 Canvas Matrix Rain -->
+  <canvas id="matrix-rain"></canvas>
+
+  <!-- CRT Monitor Overlay -->
+  <div class="crt-overlay" id="crt-overlay"></div>
+  <div class="vignette"></div>
+
+  <!-- Red Pill / Blue Pill Entrance Splash Modal -->
+  <div id="intro-modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+    <div class="intro-content">
+      <div class="terminal-header-bar">
+        <div class="window-dots">
+          <span class="dot"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+        <span>CONSTRUCT_INIT.EXE</span>
+        <span>SYS.V: 4.19</span>
+      </div>
+
+      <div class="typewriter-text" id="intro-typewriter"></div>
+      <span class="cursor-blink"></span>
+
+      <div class="pill-choice-container" id="pill-choice-box">
+        <button class="btn-pill btn-red-pill" id="btn-red-pill" aria-label="Take Red Pill">
+          <span>🔴</span> TAKE RED PILL (SEE THE TRUTH)
+        </button>
+        <button class="btn-pill btn-blue-pill" id="btn-blue-pill" aria-label="Take Blue Pill">
+          <span>🔵</span> TAKE BLUE PILL (STAY BLISSFUL)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="cyber-navbar" id="cyber-navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="nav-brand" aria-label="Matrix Portfolio Home">
+        <span class="brand-icon">⚡</span>
+        <span class="brand-text">MATRIX_OPERATOR</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link active">[01_ORIGIN]</a></li>
+        <li><a href="#about" class="nav-link">[02_PROFILE]</a></li>
+        <li><a href="#projects" class="nav-link">[03_PROGRAMS]</a></li>
+        <li><a href="#skills" class="nav-link">[04_NEURAL]</a></li>
+        <li><a href="#terminal" class="nav-link">[05_SHELL]</a></li>
+        <li><a href="#contact" class="nav-link">[06_SIGNAL]</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <button class="cyber-toggle-btn" id="toggle-audio" title="Toggle Sound Effects">
+          <span id="audio-icon">🔊</span> AUDIO: <span id="audio-status">ON</span>
+        </button>
+        <button class="cyber-toggle-btn" id="toggle-crt" title="Toggle CRT Filter">
+          <span>📺</span> CRT
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-text-content">
+        <div class="system-status-badge">
+          <span class="status-dot"></span>
+          <span>SIGNAL SECURE // IP: 127.0.0.1</span>
+        </div>
+
+        <h1 class="hero-title">
+          WAKE UP, WORLD.<br>
+          I AM <span class="highlight">AMAN KUMAR</span>.
+        </h1>
+
+        <p class="hero-subtitle">
+          Full-Stack Architect & Cybernetic Engineer crafting high-performance digital construct applications, distributed systems, and real-time user experiences.
+        </p>
+
+        <div class="hero-stats-row">
+          <div class="stat-item">
+            <div class="stat-number">99.9%</div>
+            <div class="stat-label">System Uptime</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Deployed Programs</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">LEVEL 5</div>
+            <div class="stat-label">Security Access</div>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#terminal" class="btn-cyber">
+            <span>>_</span> ACCESS SHELL
+          </a>
+          <a href="#projects" class="btn-cyber btn-cyber-outline">
+            VIEW PROGRAMS
+          </a>
+        </div>
+      </div>
+
+      <!-- Code Widget Right -->
+      <div class="hero-code-card">
+        <div class="terminal-header-bar">
+          <div class="window-dots">
+            <span class="dot"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span>AMAN_CORE_KERNEL.TS</span>
+        </div>
+        <div class="code-card-body">
+          <div class="code-line"><span class="cm">// Initialize Matrix Neural Interface</span></div>
+          <div class="code-line"><span class="kw">import</span> { Operator } <span class="kw">from</span> <span class="str">'@matrix/core'</span>;</div>
+          <div class="code-line"></div>
+          <div class="code-line"><span class="kw">class</span> <span class="fn">MatrixArchitect</span> <span class="kw">extends</span> Operator {</div>
+          <div class="code-line">&nbsp;&nbsp;<span class="kw">private</span> status: <span class="str">'UNPLUGGED'</span> = <span class="str">'UNPLUGGED'</span>;</div>
+          <div class="code-line">&nbsp;&nbsp;<span class="kw">public</span> name = <span class="str">'Aman Kumar'</span>;</div>
+          <div class="code-line">&nbsp;&nbsp;<span class="kw">public</span> skills = [<span class="str">'React'</span>, <span class="str">'Node'</span>, <span class="str">'Rust'</span>, <span class="str">'AI'</span>];</div>
+          <div class="code-line"></div>
+          <div class="code-line">&nbsp;&nbsp;<span class="kw">public</span> <span class="fn">freeYourMind</span>(): <span class="kw">Promise</span>&lt;<span class="kw">boolean</span>&gt; {</div>
+          <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="kw">this</span>.<span class="fn">executeCode</span>({ clarity: <span class="num">100</span> });</div>
+          <div class="code-line">&nbsp;&nbsp;}</div>
+          <div class="code-line">}</div>
+          <div class="code-line"></div>
+          <div class="code-line"><span class="kw">export const</span> aman = <span class="kw">new</span> <span class="fn">MatrixArchitect</span>();</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">[02_PROFILE]</div>
+        <h2 class="section-title">OPERATOR SPECS</h2>
+      </div>
+
+      <div class="about-grid">
+        <!-- Interactive Matrix Hologram Avatar Container -->
+        <div class="operator-avatar-wrapper" id="avatar-container">
+          <div class="hud-corner top-left"></div>
+          <div class="hud-corner top-right"></div>
+          <div class="hud-corner bottom-left"></div>
+          <div class="hud-corner bottom-right"></div>
+
+          <div class="avatar-image-box">
+            <img src="Resources/AmanKr.jpeg" alt="Aman Kumar - Matrix Operator" class="cyber-avatar-img hologram-mode" id="operator-img">
+            <div class="avatar-scanline-beam"></div>
+            <div class="avatar-glitch-overlay"></div>
+          </div>
+
+          <div class="avatar-hud-footer">
+            <div class="hud-status-text">
+              <span>SUBJECT: AMAN KUMAR</span>
+              <span id="hologram-mode-badge" style="color:var(--matrix-green);">[HOLOGRAM_ACTIVE]</span>
+            </div>
+            <button class="cyber-toggle-btn" id="toggle-avatar-mode" style="width: 100%; justify-content: center; margin-top: 8px;">
+              <span>⚡</span> TOGGLE HOLOGRAM / HD MODE
+            </button>
+          </div>
+        </div>
+
+        <div class="operator-details-card">
+          <p class="operator-bio">
+            I am <strong>Aman Kumar</strong>, a full-stack software engineer and digital architect. I engineer robust web applications, scalable backend systems, and responsive user constructs. Unplugged to craft high-impact code beneath the simulation.
+          </p>
+
+          <div class="spec-grid">
+            <div class="spec-item">
+              <div class="spec-key">CODENAME</div>
+              <div class="spec-val">AMAN KUMAR // THE ARCHITECT</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-key">DISCIPLINE</div>
+              <div class="spec-val">FULL-STACK & CLOUD AI</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-key">CLEARANCE</div>
+              <div class="spec-val">LEVEL 5 ROOT ACCESS</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-key">LOCATION</div>
+              <div class="spec-val">ZION MAIN SYSTEM (REMOTE)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">[03_PROGRAMS]</div>
+        <h2 class="section-title">DECODED CONSTRUCTS</h2>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="project-filters" id="project-filters">
+        <button class="filter-btn active" data-filter="all">ALL CONSTRUCTS</button>
+        <button class="filter-btn" data-filter="web">WEB APPLICATIONS</button>
+        <button class="filter-btn" data-filter="cyber">CYBERSECURITY & AI</button>
+        <button class="filter-btn" data-filter="system">SYSTEM UTILITIES</button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid" id="projects-grid">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Matrix Section -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">[04_NEURAL]</div>
+        <h2 class="section-title">NEURAL CAPABILITIES</h2>
+      </div>
+
+      <div class="skills-grid" id="skills-grid">
+        <!-- Skill categories injected via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Shell Terminal Section -->
+  <section class="section" id="terminal">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">[05_SHELL]</div>
+        <h2 class="section-title">MATRIX SHELL V2.4</h2>
+      </div>
+
+      <div class="terminal-wrapper">
+        <div class="terminal-header-bar">
+          <div class="window-dots">
+            <span class="dot"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span>NEO@MATRIX-CONSTRUCT: ~ (BASH)</span>
+          <span>TTY: /dev/pts/0</span>
+        </div>
+
+        <div class="terminal-viewport" id="terminal-viewport">
+          <div class="terminal-output-line">Matrix Shell v2.4 initialized. Type <span style="color: #fff; font-weight: bold;">'help'</span> to view available system commands.</div>
+          <div class="terminal-output-line">Try running: <span style="color: var(--matrix-green);">projects</span>, <span style="color: var(--matrix-green);">skills</span>, <span style="color: var(--matrix-green);">contact</span>, <span style="color: var(--matrix-green);">matrix</span>, <span style="color: var(--matrix-green);">whoami</span></div>
+          <div id="terminal-history"></div>
+
+          <div class="terminal-prompt-row">
+            <span class="prompt-symbol">neo@matrix-construct:~$</span>
+            <input type="text" class="terminal-input" id="terminal-input" autocomplete="off" spellcheck="false" placeholder="Type a command...">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Matrix Section -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">[06_SIGNAL]</div>
+        <h2 class="section-title">TRANSMIT SIGNAL</h2>
+      </div>
+
+      <div class="contact-grid">
+        <form class="contact-card" id="contact-form">
+          <div class="cyber-form-group">
+            <label class="cyber-label" for="contact-name">CALLSIGN / NAME</label>
+            <input type="text" id="contact-name" class="cyber-input" required placeholder="Morpheus">
+          </div>
+
+          <div class="cyber-form-group">
+            <label class="cyber-label" for="contact-email">ENCRYPTED EMAIL</label>
+            <input type="email" id="contact-email" class="cyber-input" required placeholder="morpheus@nebucadnezzar.io">
+          </div>
+
+          <div class="cyber-form-group">
+            <label class="cyber-label" for="contact-message">TRANSMISSION MESSAGE</label>
+            <textarea id="contact-message" class="cyber-textarea" required placeholder="Enter transmission body..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-cyber" id="contact-submit-btn" style="width: 100%; justify-content: center;">
+            <span>⚡</span> TRANSMIT ENCRYPTED SIGNAL
+          </button>
+        </form>
+
+        <div class="contact-methods">
+          <a href="https://github.com" target="_blank" class="contact-method-item">
+            <div class="method-icon">🐙</div>
+            <div class="method-info">
+              <h4>GITHUB MATRIX REPO</h4>
+              <p>@matrix-operator // Source Code Construct</p>
+            </div>
+          </a>
+
+          <a href="https://linkedin.com" target="_blank" class="contact-method-item">
+            <div class="method-icon">💼</div>
+            <div class="method-info">
+              <h4>LINKEDIN TRANSMISSION</h4>
+              <p>in/matrix-operator // Neural Network</p>
+            </div>
+          </a>
+
+          <div class="contact-method-item">
+            <div class="method-icon">✉️</div>
+            <div class="method-info">
+              <h4>SECURE TERMINAL MAIL</h4>
+              <p>neo@matrix-construct.io</p>
+            </div>
+          </div>
+
+          <div class="contact-method-item">
+            <div class="method-icon">🔑</div>
+            <div class="method-info">
+              <h4>PGP PUBLIC KEY</h4>
+              <p>0x4F92A01B // 4096-bit RSA</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Project Modal -->
+  <div class="cyber-modal-overlay" id="project-modal">
+    <div class="cyber-modal-container">
+      <div class="terminal-header-bar">
+        <div class="window-dots">
+          <span class="dot"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+        <span id="modal-project-code">PROGRAM_INSPECT.EXE</span>
+        <button id="modal-close-btn" style="background:none; border:none; color:var(--matrix-green); cursor:pointer; font-weight:bold;">[X]</button>
+      </div>
+
+      <div class="cyber-modal-body">
+        <h3 id="modal-project-title" style="font-size: 1.5rem; color: #fff; margin-bottom: 10px;"></h3>
+        <p id="modal-project-desc" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6;"></p>
+        
+        <div style="margin-bottom: 20px;">
+          <h4 style="font-size: 0.85rem; color: var(--matrix-green); margin-bottom: 8px;">TECH ARCHITECTURE:</h4>
+          <div id="modal-project-tech" class="tech-tags"></div>
+        </div>
+
+        <div style="display: flex; gap: 12px; margin-top: 25px;">
+          <a href="#" id="modal-live-btn" target="_blank" class="btn-cyber" style="flex: 1; justify-content: center;">RUN PROGRAM</a>
+          <a href="#" id="modal-repo-btn" target="_blank" class="btn-cyber btn-cyber-outline" style="flex: 1; justify-content: center;">INSPECT SOURCE</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="cyber-footer">
+    <div class="container footer-content">
+      <div class="footer-logo">SYSTEM STATUS: FULLY FUNCTIONAL</div>
+      <p>© 2026 MATRIX OPERATOR PORTFOLIO // ALL RIGHTS RESERVED IN THE CONSTRUCT</p>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
